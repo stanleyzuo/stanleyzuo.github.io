@@ -7,6 +7,15 @@
 	<link rel="icon" href="img/favicon.ico">
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
 	<style>
+		:root:before {
+			content: url(img/watches.jpg)
+			url(img/boosted.jpg)
+			url(img/pc.jpg);
+			background-image: url(img/watches.jpg);
+			visibility: hidden;
+			position: absolute;
+			left: -999em;
+		}
 		html {
 			font-size: 100%;
 		}
@@ -51,16 +60,17 @@
 			width:100%;
 			height:100%;
 			object-fit: cover;
+			transition: opacity 1s ease-in-out;
 		}
 		.left-panel {
 			width: 50%;
 			height: 100vh;
 			top: 0;
 			position: sticky;
-			background-image: url("");
+			background-image: "";
 			background-size: cover;
 			background-position: center;
-			transition: background-image 0.2s ease-in-out;
+			transition: background-image 1s ease-in-out;
 		}
 		.right-panel {
 			width: 50%;
@@ -134,7 +144,7 @@
 				<h3>Fun facts</h3>
 				<div class="facts">
 					<ul>
-						<li>I am a watch geek.</li>
+						<li><a href="#" data-image="img/watches.jpg">I am a watch geek.</a></li>
 						<li><a href="#" data-image="img/boosted.jpg">I ride my Boosted Board to work every day.</a></li>
 						<li><a href="#" data-image="img/pc.jpg">I am a new but proud member of the PCMR.</a></li>
 						<li>Forest green is my color of the year.</li>
@@ -163,13 +173,13 @@
 			var getImage = function() {
 				var url = "url("+this.dataset["image"]+")"
 				document.querySelector(".left-panel").style.backgroundImage = url;
-				video.style.display = "none";
+				video.style.opacity = 0;
 			}
 			for(var i = 0; i < images.length; i++) {
 				images[i].onclick = getImage;
 			}
 			document.querySelector("h1").onclick = function(){
-				video.style.display = "block";
+				video.style.opacity = 1;
 			}
 		</script>
 	</body>
