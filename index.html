@@ -143,7 +143,7 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 	<div class="left-panel">
-		<video autoplay muted loop playsinLine>
+		<video disableRemotePlayback autoplay muted loop playsinLine>
 			<source src="img/stanley.mp4" type="video/mp4">
 			</video>
 		</div>
@@ -186,7 +186,7 @@
 				document.querySelector(".left-panel").style.backgroundImage = url;
 				video.style.opacity = 0;
 			}
-			for(var i = 0; i < images.length; i++) {
+			for(var i = 0; i < images.length - 2; i++) {
 				images[i].onclick = getImage;
 			}
 			document.querySelector("h1").onclick = function(){
