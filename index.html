@@ -70,7 +70,7 @@
 			width:100%;
 			height:100%;
 			object-fit: cover;
-			transition: opacity 1s ease-in-out;
+			transition: opacity 0.5s ease-in-out;
 		}
 		span {
 			color: forestgreen;
@@ -84,7 +84,7 @@
 			background-image: "";
 			background-size: cover;
 			background-position: center;
-			transition: background-image 1s ease-in-out;
+			transition: background-image 0.5s ease-in-out;
 		}
 		.right-panel {
 			width: 50%;
@@ -149,23 +149,21 @@
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 	<div class="left-panel">
-		<video disableRemotePlayback autoplay muted loop playsinLine>
-			<source src="img/stanley.mp4" type="video/mp4">
-			</video>
+		<video disableRemotePlayback autoplay muted loop playsinLine src="img/stanley.mp4" type="video/mp4"></video>
 		</div>
 		<div class="right-panel">
 			<div class="content">
 				<div class="head">
-					<h1><a href="#">Stanley Zuo</a></h1>
+					<h1><a class="vid" href="#" data-image="img/stanley.mp4">Stanley Zuo</a></h1>
 					<h2>I help companies run experiments online to deliver better user experiences and increase conversions.</h2>
 				</div>
 				<h3>Fun facts</h3>
 				<div class="facts">
 					<ul>
-						<li><a href="#" data-image="img/watches.jpg">I'm a watch geek.</a></li>
-						<li><a href="#" data-image="img/boosted.jpg">I love riding my Boosted Board.</a></li>
-						<li><a href="#" data-image="img/pc.jpg">I'm a proud member of the PCMR.</a></li>
-						<li><a href="#" data-image="img/green.jpg">Forest green is my favorite color.</a></li>
+						<li><a href="#" data-image="img/dog.jpg">I love hanging out with my dog</a></li>
+						<li><a class="vid" href="#" data-image="img/euc-cropped.mp4">I love riding my EUC</a></li>
+						<li><a href="#" data-image="img/watches.jpg">I'm a watch geek</a></li>
+						<li><a href="#" data-image="img/khaki.jpg">I have an unhealthy obsession with khaki</a></li>
 					</ul>
 				</div>
 				<h3>Links</h3>
@@ -184,7 +182,8 @@
 			</div>
 		</div>
 		<script>
-			var images = document.querySelectorAll(".facts a");
+			var images = document.querySelectorAll(".facts a:not(.vid)");
+			var vids = document.querySelectorAll(".vid");
 			var video = document.querySelector("video");
 			var getImage = function() {
 				var url = "url("+this.dataset["image"]+")"
@@ -194,8 +193,12 @@
 			for(var i = 0; i < images.length; i++) {
 				images[i].onclick = getImage;
 			}
-			document.querySelector("h1").onclick = function(){
+			var getVideo = function() {
+				video.src = this.dataset["image"];
 				video.style.opacity = 1;
+			}
+			for(var i = 0; i < vids.length; i++) {
+				vids[i].onclick = getVideo;
 			}
 		</script>
 	</body>
